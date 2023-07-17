@@ -1,9 +1,9 @@
 # GA4 integration for laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mktatva/laravel-analytics.svg?style=flat-square)](https://packagist.org/packages/mktatva/laravel-analytics)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mrugeshtatvasoft/laravel-analytics.svg?style=flat-square)](https://packagist.org/packages/mrugeshtatvasoft/laravel-analytics)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/mrugeshtatvasoft/laravel-analytics/run-tests?label=tests)](https://github.com/mrugeshtatvasoft/laravel-analytics/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/mrugeshtatvasoft/laravel-analytics/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/mrugeshtatvasoft/laravel-analytics/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/mktatva/laravel-analytics.svg?style=flat-square)](https://packagist.org/packages/mktatva/laravel-analytics)
+[![Total Downloads](https://img.shields.io/packagist/dt/mrugeshtatvasoft/laravel-analytics.svg?style=flat-square)](https://packagist.org/packages/mrugeshtatvasoft/laravel-analytics)
 
 This package offers integration to GA4 properties with some out of the box methods. Inspired by [Spatie integration](https://github.com/spatie/laravel-analytics) for GA3. Requires Laravel 9+.
 
@@ -12,7 +12,7 @@ This package offers integration to GA4 properties with some out of the box metho
 You can install the package via composer:
 
 ```bash
-composer require mktatva/laravel-analytics
+composer require mrugeshtatvasoft/laravel-analytics
 ```
 
 You can publish the config file with:
@@ -43,8 +43,8 @@ return [
 Inside Laravel:
 
 ```php
-use MkTatva\AnalyticsV4\Period;
-use MkTatva\AnalyticsV4\PrebuiltRunConfigurations;
+use mrugeshtatvasoft\AnalyticsV4\Period;
+use mrugeshtatvasoft\AnalyticsV4\PrebuiltRunConfigurations;
 
 $client = App::make('analytics-v4');
 $lastMonth = Period::months(1);
