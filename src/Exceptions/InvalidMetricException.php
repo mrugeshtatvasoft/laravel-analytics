@@ -1,6 +1,6 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4\Exceptions;
+namespace MrugeshTatvasoft\LaravelAnalytics\Exceptions;
 
 class InvalidMetricException extends \InvalidArgumentException
 {

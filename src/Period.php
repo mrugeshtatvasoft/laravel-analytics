@@ -1,10 +1,10 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4;
+namespace MrugeshTatvasoft\LaravelAnalytics;
 
 use DateTimeInterface;
 use Illuminate\Support\Carbon;
-use MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidPeriodException;
+use MrugeshTatvasoft\LaravelAnalytics\Exceptions\InvalidPeriodException;
 
 /**
  * This class is from the original package this is based on

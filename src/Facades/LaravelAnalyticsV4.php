@@ -1,16 +1,16 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4\Facades;
+namespace MrugeshTatvasoft\LaravelAnalytics\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \MrugeshTatvasoft\AnalyticsV4\AnalyticsV4
+ * @see \MrugeshTatvasoft\LaravelAnalytics\LaravelAnalytics
  */
-class AnalyticsV4 extends Facade
+class LaravelAnalytics extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \MrugeshTatvasoft\AnalyticsV4\AnalyticsV4::class;
+        return \MrugeshTatvasoft\LaravelAnalytics\LaravelAnalytics::class;
     }
 }

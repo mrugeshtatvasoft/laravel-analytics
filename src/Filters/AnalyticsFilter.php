@@ -1,12 +1,12 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4\Filters;
+namespace MrugeshTatvasoft\LaravelAnalytics\Filters;
 
 use Illuminate\Support\Str;
-use MrugeshTatvasoft\AnalyticsV4\AnalyticsDimensions;
-use MrugeshTatvasoft\AnalyticsV4\AnalyticsMetrics;
-use MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidDimensionException;
-use MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidMetricException;
+use MrugeshTatvasoft\LaravelAnalytics\AnalyticsDimensions;
+use MrugeshTatvasoft\LaravelAnalytics\AnalyticsMetrics;
+use MrugeshTatvasoft\LaravelAnalytics\Exceptions\InvalidDimensionException;
+use MrugeshTatvasoft\LaravelAnalytics\Exceptions\InvalidMetricException;
 
 abstract class AnalyticsFilter
 {

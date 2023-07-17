@@ -1,17 +1,17 @@
 <?php
 
-use MrugeshTatvasoft\AnalyticsV4\Period;
-use MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration;
+use MrugeshTatvasoft\LaravelAnalytics\Period;
+use MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration;
 
 it('throws when invalid metrics are requested', function () {
-    $runConfiguration = new \MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration();
+    $runConfiguration = new \MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration();
     $runConfiguration->addMetric('modelNumber');
-})->throws(\MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidMetricException::class);
+})->throws(\MrugeshTatvasoft\LaravelAnalytics\Exceptions\InvalidMetricException::class);
 
 it('throws when invalid dimensions are requested', function () {
-    $runConfiguration = new \MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration();
+    $runConfiguration = new \MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration();
     $runConfiguration->addDimension('personality');
-})->throws(\MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidDimensionException::class);
+})->throws(\MrugeshTatvasoft\LaravelAnalytics\Exceptions\InvalidDimensionException::class);
 
 it('can return a new instance of the analytics class from the factory', function () {
     $configuration = [
@@ -36,16 +36,16 @@ it('can return a new instance of the analytics class from the factory', function
             ],
         ],
     ];
-    expect(MrugeshTatvasoft\AnalyticsV4\AnalyticsV4Factory::createFromConfiguration($configuration))->toBeInstanceOf(\MrugeshTatvasoft\AnalyticsV4\AnalyticsV4::class);
+    expect(MrugeshTatvasoft\LaravelAnalytics\LaravelAnalyticsFactory::createFromConfiguration($configuration))->toBeInstanceOf(\MrugeshTatvasoft\LaravelAnalytics\LaravelAnalytics::class);
 });
 
 it('properly generates the required configuration for the underlying analytics library', function () {
     // We want to see blog performance
-    $filter = new MrugeshTatvasoft\AnalyticsV4\Filters\StringFilter();
+    $filter = new MrugeshTatvasoft\LaravelAnalytics\Filters\StringFilter();
     $filter->setDimension('landingPage');
     $filter->contains('/blog/');
 
-    $runReport = new MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration();
+    $runReport = new MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration();
     $runReport->setStartDate('2022-09-01')->setEndDate('2022-09-30');
     $runReport->addDimensions(['country', 'landingPage', 'date']);
     $runReport->addMetric('sessions');
@@ -66,11 +66,11 @@ it('properly generates the required configuration for the underlying analytics l
 
 it('produces proper configuration for single dimension filter configurations', function () {
     // We want to see blog performance
-    $filter = new MrugeshTatvasoft\AnalyticsV4\Filters\StringFilter();
+    $filter = new MrugeshTatvasoft\LaravelAnalytics\Filters\StringFilter();
     $filter->setDimension('landingPage');
     $filter->contains('/blog/');
 
-    $runReport = new MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration();
+    $runReport = new MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration();
     $runReport->setStartDate('2022-09-01')->setEndDate('2022-09-30');
     $runReport->addDimensions(['country', 'landingPage', 'date']);
     $runReport->addMetric('sessions');
@@ -85,11 +85,11 @@ it('produces proper configuration for single dimension filter configurations', f
 
 it('produces proper configuration for single metric filter configurations', function () {
     // We want to see blog performance
-    $filter = new MrugeshTatvasoft\AnalyticsV4\Filters\NumericFilter();
+    $filter = new MrugeshTatvasoft\LaravelAnalytics\Filters\NumericFilter();
     $filter->setMetric('sessions');
     $filter->greaterThanOrEqual(500);
 
-    $runReport = new MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration();
+    $runReport = new MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration();
     $runReport->setStartDate('2022-09-01')->setEndDate('2022-09-30');
     $runReport->addDimensions(['country', 'landingPage', 'date']);
     $runReport->addMetric('sessions');
@@ -104,15 +104,15 @@ it('produces proper configuration for single metric filter configurations', func
 
 it('produces proper configuration for "AND" filter group configurations', function () {
     // We want to see blog performance
-    $blogFilter = new MrugeshTatvasoft\AnalyticsV4\Filters\StringFilter();
+    $blogFilter = new MrugeshTatvasoft\LaravelAnalytics\Filters\StringFilter();
     $blogFilter->setDimension('landingPage');
     $blogFilter->contains('/blog/');
 
-    $countryFilter = new MrugeshTatvasoft\AnalyticsV4\Filters\StringFilter();
+    $countryFilter = new MrugeshTatvasoft\LaravelAnalytics\Filters\StringFilter();
     $countryFilter->setDimension('country');
     $countryFilter->exactlyMatches('United States');
 
-    $runReport = new MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration();
+    $runReport = new MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration();
     $runReport->setStartDate('2022-09-01')->setEndDate('2022-09-30');
     $runReport->addDimensions(['country', 'landingPage', 'date']);
     $runReport->addMetric('sessions');
@@ -134,15 +134,15 @@ it('produces proper configuration for "AND" filter group configurations', functi
 
 it('produces proper configuration for "OR" filter group configurations', function () {
     // We want to see blog performance
-    $blogFilter = new MrugeshTatvasoft\AnalyticsV4\Filters\StringFilter();
+    $blogFilter = new MrugeshTatvasoft\LaravelAnalytics\Filters\StringFilter();
     $blogFilter->setDimension('landingPage');
     $blogFilter->contains('/blog/');
 
-    $countryFilter = new MrugeshTatvasoft\AnalyticsV4\Filters\StringFilter();
+    $countryFilter = new MrugeshTatvasoft\LaravelAnalytics\Filters\StringFilter();
     $countryFilter->setDimension('country');
     $countryFilter->exactlyMatches('United States');
 
-    $runReport = new MrugeshTatvasoft\AnalyticsV4\RunReportConfiguration();
+    $runReport = new MrugeshTatvasoft\LaravelAnalytics\RunReportConfiguration();
     $runReport->setStartDate('2022-09-01')->setEndDate('2022-09-30');
     $runReport->addDimensions(['country', 'landingPage', 'date']);
     $runReport->addMetric('sessions');

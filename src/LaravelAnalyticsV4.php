@@ -1,6 +1,6 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4;
+namespace MrugeshTatvasoft\LaravelAnalytics;
 
 use Google\Analytics\Data\V1beta\DimensionHeader;
 use Google\Analytics\Data\V1beta\DimensionValue;
@@ -9,13 +9,13 @@ use Google\Analytics\Data\V1beta\MetricValue;
 use Google\Analytics\Data\V1beta\Row;
 use Google\Analytics\Data\V1beta\RunReportResponse;
 
-class AnalyticsV4
+class LaravelAnalytics
 {
-    protected AnalyticsV4Client $client;
+    protected LaravelAnalyticsClient $client;
 
     protected bool $shouldConvertResponseToArray = true;
 
-    public function __construct(AnalyticsV4Client $client)
+    public function __construct(LaravelAnalyticsClient $client)
     {
         $this->client = $client;
     }

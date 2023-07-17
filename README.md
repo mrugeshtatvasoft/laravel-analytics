@@ -43,8 +43,8 @@ return [
 Inside Laravel:
 
 ```php
-use mrugeshtatvasoft\AnalyticsV4\Period;
-use mrugeshtatvasoft\AnalyticsV4\PrebuiltRunConfigurations;
+use mrugeshtatvasoft\LaravelAnalytics\Period;
+use mrugeshtatvasoft\LaravelAnalytics\PrebuiltRunConfigurations;
 
 $client = App::make('analytics-v4');
 $lastMonth = Period::months(1);

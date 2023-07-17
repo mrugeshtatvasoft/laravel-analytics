@@ -1,10 +1,10 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4;
+namespace MrugeshTatvasoft\LaravelAnalytics;
 
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 
-class AnalyticsV4Factory
+class LaravelAnalyticsFactory
 {
     public static function createFromConfiguration(array $analyticsConfiguration)
     {
@@ -21,11 +21,11 @@ class AnalyticsV4Factory
             'credentials' => $credentialConfiguration,
         ]);
 
-        $analyticsClient = (new AnalyticsV4Client())
+        $analyticsClient = (new LaravelAnalyticsClient())
             ->setProperty($analyticsConfiguration['property_id'])
             ->setGoogleClient($client);
 
-        return new AnalyticsV4($analyticsClient);
+        return new LaravelAnalytics($analyticsClient);
     }
 
     public static function readCredentials(string $credentialLocation): array

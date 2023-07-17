@@ -29,13 +29,13 @@
     },
    "autoload": {
         "psr-4": {
-            "MrugeshTatvasoft\\AnalyticsV4\\": "src",
-            "MrugeshTatvasoft\\AnalyticsV4\\Database\\Factories\\": "database/factories"
+            "MrugeshTatvasoft\\LaravelAnalytics\\": "src",
+            "MrugeshTatvasoft\\LaravelAnalytics\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MrugeshTatvasoft\\AnalyticsV4\\Tests\\": "tests"
+            "MrugeshTatvasoft\\LaravelAnalytics\\Tests\\": "tests"
         }
     },
     "authors": [
@@ -51,10 +51,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MrugeshTatvasoft\\AnalyticsV4\\AnalyticsV4ServiceProvider"
+                "MrugeshTatvasoft\\LaravelAnalytics\\LaravelAnalyticsServiceProvider"
             ],
             "aliases": {
-                "AnalyticsV4": "MrugeshTatvasoft\\AnalyticsV4\\Facades\\AnalyticsV4"
+                "LaravelAnalytics": "MrugeshTatvasoft\\LaravelAnalytics\\Facades\\LaravelAnalytics"
             }
         }
     },

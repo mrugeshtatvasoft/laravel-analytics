@@ -1,8 +1,8 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4;
+namespace MrugeshTatvasoft\LaravelAnalytics;
 
-use MrugeshTatvasoft\AnalyticsV4\Filters\StringFilter;
+use MrugeshTatvasoft\LaravelAnalytics\Filters\StringFilter;
 
 class PrebuiltRunConfigurations
 {

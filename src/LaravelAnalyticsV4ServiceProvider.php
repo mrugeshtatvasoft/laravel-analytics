@@ -1,11 +1,11 @@
 <?php
 
-namespace MrugeshTatvasoft\AnalyticsV4;
+namespace MrugeshTatvasoft\LaravelAnalytics;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class AnalyticsV4ServiceProvider extends PackageServiceProvider
+class LaravelAnalyticsServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -21,10 +21,10 @@ class AnalyticsV4ServiceProvider extends PackageServiceProvider
 
     public function registeringPackage()
     {
-        $this->app->bind(AnalyticsV4::class, function () {
-            return AnalyticsV4Factory::createFromConfiguration(config('analytics-v4'));
+        $this->app->bind(LaravelAnalytics::class, function () {
+            return LaravelAnalyticsFactory::createFromConfiguration(config('analytics-v4'));
         });
 
-        $this->app->alias(AnalyticsV4::class, 'laravel-analytics');
+        $this->app->alias(LaravelAnalytics::class, 'laravel-analytics');
     }
 }
