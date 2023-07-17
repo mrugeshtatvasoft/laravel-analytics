@@ -18,7 +18,7 @@ composer require mrugeshtatvasoft/laravel-analytics
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="analytics-v4-config"
+php artisan vendor:publish --tag="analytics-config"
 ```
 
 This is the contents of the published config file:
