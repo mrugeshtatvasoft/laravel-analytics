@@ -1,8 +1,8 @@
 <?php
 
-namespace MkTatva\AnalyticsV4\Tests;
+namespace MrugeshTatvasoft\AnalyticsV4\Tests;
 
-use MkTatva\AnalyticsV4\AnalyticsV4ServiceProvider;
+use MrugeshTatvasoft\AnalyticsV4\AnalyticsV4ServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

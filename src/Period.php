@@ -1,10 +1,10 @@
 <?php
 
-namespace MkTatva\AnalyticsV4;
+namespace MrugeshTatvasoft\AnalyticsV4;
 
 use DateTimeInterface;
 use Illuminate\Support\Carbon;
-use MkTatva\AnalyticsV4\Exceptions\InvalidPeriodException;
+use MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidPeriodException;
 
 /**
  * This class is from the original package this is based on

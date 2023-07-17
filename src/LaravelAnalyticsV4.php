@@ -1,6 +1,6 @@
 <?php
 
-namespace MkTatva\AnalyticsV4;
+namespace MrugeshTatvasoft\AnalyticsV4;
 
 use Google\Analytics\Data\V1beta\DimensionHeader;
 use Google\Analytics\Data\V1beta\DimensionValue;

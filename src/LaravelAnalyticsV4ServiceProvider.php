@@ -1,6 +1,6 @@
 <?php
 
-namespace MkTatva\AnalyticsV4;
+namespace MrugeshTatvasoft\AnalyticsV4;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MkTatva\AnalyticsV4\Exceptions;
+namespace MrugeshTatvasoft\AnalyticsV4\Exceptions;
 
 use DateTimeInterface;
 use Exception;

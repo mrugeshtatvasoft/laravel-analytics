@@ -1,6 +1,6 @@
 <?php
 
-namespace MkTatva\AnalyticsV4\Filters;
+namespace MrugeshTatvasoft\AnalyticsV4\Filters;
 
 use Google\Analytics\Data\V1beta\Filter;
 use Google\Analytics\Data\V1beta\Filter\BetweenFilter;

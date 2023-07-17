@@ -2,7 +2,7 @@
     "name": "mrugeshtatvasoft/laravel-analytics",
     "description": "GA4 integration for laravel",
     "keywords": [
-        "MkTatva",
+        "MrugeshTatvasoft",
         "laravel",
         "analytics-v4"
     ],
@@ -29,13 +29,13 @@
     },
    "autoload": {
         "psr-4": {
-            "MkTatva\\AnalyticsV4\\": "src",
-            "MkTatva\\AnalyticsV4\\Database\\Factories\\": "database/factories"
+            "MrugeshTatvasoft\\AnalyticsV4\\": "src",
+            "MrugeshTatvasoft\\AnalyticsV4\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MkTatva\\AnalyticsV4\\Tests\\": "tests"
+            "MrugeshTatvasoft\\AnalyticsV4\\Tests\\": "tests"
         }
     },
     "authors": [
@@ -51,10 +51,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MkTatva\\AnalyticsV4\\AnalyticsV4ServiceProvider"
+                "MrugeshTatvasoft\\AnalyticsV4\\AnalyticsV4ServiceProvider"
             ],
             "aliases": {
-                "AnalyticsV4": "MkTatva\\AnalyticsV4\\Facades\\AnalyticsV4"
+                "AnalyticsV4": "MrugeshTatvasoft\\AnalyticsV4\\Facades\\AnalyticsV4"
             }
         }
     },

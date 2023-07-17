@@ -1,12 +1,12 @@
 <?php
 
-namespace MkTatva\AnalyticsV4\Filters;
+namespace MrugeshTatvasoft\AnalyticsV4\Filters;
 
 use Illuminate\Support\Str;
-use MkTatva\AnalyticsV4\AnalyticsDimensions;
-use MkTatva\AnalyticsV4\AnalyticsMetrics;
-use MkTatva\AnalyticsV4\Exceptions\InvalidDimensionException;
-use MkTatva\AnalyticsV4\Exceptions\InvalidMetricException;
+use MrugeshTatvasoft\AnalyticsV4\AnalyticsDimensions;
+use MrugeshTatvasoft\AnalyticsV4\AnalyticsMetrics;
+use MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidDimensionException;
+use MrugeshTatvasoft\AnalyticsV4\Exceptions\InvalidMetricException;
 
 abstract class AnalyticsFilter
 {
