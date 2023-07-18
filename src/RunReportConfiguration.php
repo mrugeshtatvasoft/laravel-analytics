@@ -359,10 +359,9 @@ class RunReportConfiguration
                 }
                 $filter->exactlyMatches($ExtractFilterValue[1]);
             }
-            // dd($filter->toGoogleTypes());
+            
             $this->addFilter($filter);
         }
-        // dd($this);
 
         return $this;
     }
