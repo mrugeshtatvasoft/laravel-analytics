@@ -1,50 +1,56 @@
-# GitHub Action for Laravel
-name: Testing Laravel
-on: [push, pull_request]
-jobs:
-  laravel:
-    name: Laravel (PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }})
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      fail-fast: false
-      matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
-        php-versions: ['7.4', '8.0', '8.1']
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+- hosts: all
+  become: true
+  tasks:
+    - name: Make sure the remote app root exists and has the right permissions
+      file:
+        path: "{{ remote_www_root }}/{{ app_root_dir }}"
+        state: directory
+        mode: '0755'
+        owner: "{{ remote_user }}"
+        group: "{{ remote_user }}"
 
-      # Docs: https://github.com/shivammathur/setup-php
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-versions }}
-          extensions: mbstring, dom, fileinfo
-          coverage: xdebug
+    - name: Rsync application files to the remote server
+      synchronize:
+        src: "application/{{ app_root_dir }}"
+        dest: "{{ remote_www_root }}"
+        rsync_opts:
+          - "--no-motd"
+          - "--exclude=.git,vendor,tests,storage/logs/*,storage/framework/sessions/*,storage/framework/cache/*"
 
-      - name: Get composer cache directory
-        id: composer-cache
-        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+    - name: Set up additional directory permissions for www-data user on storage folder
+      acl:
+        path: "{{ remote_www_root }}/{{ app_root_dir }}/storage/"
+        entry: group:www-data:rwX
+        recursive: yes
+        state: present
 
-      - name: Cache composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          # Use composer.json for key, if composer.lock is not committed.
-          # key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
+    - name: Set up additional directory permissions for www-data user on bootstrap/cache folder
+      acl:
+        path: "{{ remote_www_root }}/{{ app_root_dir }}/bootstrap/cache/"
+        entry: group:www-data:rwX
+        recursive: yes
+        state: present
 
-      - name: Install Composer dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+    - name: Set up .env file
+      template:
+        src: laravel-env.j2
+        dest: "{{ remote_www_root }}/{{ app_root_dir }}/.env"
 
-      - name: Prepare the application
-        run: |
-          php -r "file_exists('.env') || copy('.env.example', '.env');"
-          php artisan key:generate
+    - name: Install Dependencies with Composer
+      become: false
+      composer:
+        command: install
+        working_dir: "{{ remote_www_root }}/{{ app_root_dir }}"
+      tags: [ 'composer:install' ]
 
-      - name: Clear Config
-        run: php artisan config:clear
+    - name: Generate app key
+      command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan key:generate"
+      tags: [ 'laravel', 'artisan:key' ]
 
-      - name: Test with phpunit
-        run: vendor/bin/phpunit --coverage-text
+    - name: Set up app storage link
+      command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan storage:link"
+      tags: [ 'laravel', 'artisan:storage' ]
+
+    - name: Run Migrations + Seeders
+      command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan migrate --seed"
+      tags: [ 'laravel', 'artisan:migrate' ]
