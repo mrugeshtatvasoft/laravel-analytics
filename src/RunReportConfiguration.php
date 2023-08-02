@@ -350,7 +350,10 @@ class RunReportConfiguration
                 $ExtractFilterValue = explode("!=", $filters);
                 $filter->setNotExpression();
             }
-
+            if( preg_match('~%[0-9A-F]{2}~i', $ExtractFilterValue[1])) 
+            {
+                $ExtractFilterValue[1]=urldecode($ExtractFilterValue[1]);
+            }
             if(count($ExtractFilterValue) == 2) {
                 $filter->setDimension($ExtractFilterValue[0]);
                 $list = explode(",", $ExtractFilterValue[1]);
