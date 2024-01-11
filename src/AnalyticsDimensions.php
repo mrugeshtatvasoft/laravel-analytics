@@ -1,5 +1,4 @@
 <?php
-
 namespace MrugeshTatvasoft\LaravelAnalytics;
 
 class AnalyticsDimensions
